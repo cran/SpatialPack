@@ -1,0 +1,11 @@
+useDynLib(SpatialPack)
+
+export(codisp, cor.spatial, modified.ttest)
+
+## register S3 methods
+
+S3method(print, codisp)
+S3method(plot, codisp)
+S3method(print, mod.ttest)
+S3method(summary, mod.ttest)
+S3method(print, summary.mod.ttest)
