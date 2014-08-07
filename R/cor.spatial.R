@@ -10,7 +10,7 @@ function(x, y, coords)
   OK <- complete.cases(x, y)
   x <- x[OK]
   y <- y[OK]
-  n <- length(x)
+  n <- length(OK)
   rk.x <- rank(x, ties.method = "first")
   rk.y <- rank(y, ties.method = "first")
 
@@ -24,14 +24,20 @@ function(x, y, coords)
   ypos <- coords[,2]
 
   ## initial computations
-  dims <- c(n, p)
-  x <- scale(coords[rk.x, ], scale = FALSE)
-  y <- scale(coords[rk.y, ], scale = FALSE)
+  dims <- c(n, p, 0)
+  bars <- apply(coords, 2, mean)
+  xpos.x <- xpos[rk.x]
+  xpos.y <- xpos[rk.y]
+  ypos.x <- ypos[rk.x]
+  ypos.y <- ypos[rk.y]
 
   ## call routine 
   z <- .C("cor_spatial",
-          x = as.double(x),
-          y = as.double(y),
+          xpos.x = as.double(xpos.x),
+          xpos.y = as.double(xpos.y),
+          ypos.x = as.double(ypos.x),
+          ypos.y = as.double(ypos.y),
+          bars = as.double(bars),
           xpos = as.double(xpos),
           ypos = as.double(ypos),
           dims = as.integer(dims),

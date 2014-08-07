@@ -43,6 +43,8 @@ find_interval(double *y, int n, double x)
         if (x <= y[i])
             return i;
     }
+    
+    return n - 1;
 }
 
 void

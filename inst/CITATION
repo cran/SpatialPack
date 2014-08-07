@@ -1,0 +1,14 @@
+citHeader("To cite the SpatialPack package in publications use:")
+
+citEntry(entry="Manual",
+         title = "SpatialPack: Package for analysis of spatial data",
+	 author = personList(as.person("Osorio, F."),as.person("Vallejos, R.")),
+	 year = "2014",
+	 note = "R package version 0.2-3",
+	 url = "http://cran.r-project.org/package=SpatialPack",
+	 textVersion =
+	 paste("Osorio, F. and Vallejos, R. (2014). ",
+               "SpatialPack: Package for analysis of spatial data. ",
+	       "R package version 0.2-3. ",
+	       "http://cran.r-project.org/package=SpatialPack", sep="")
+)

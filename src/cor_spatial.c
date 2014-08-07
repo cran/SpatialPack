@@ -1,31 +1,25 @@
 #include "cor_spatial.h"
 
 void
-cor_spatial(double *x, double *y, double *xpos, double *ypos, int *pdims,
-    double *cor, double *var)
+cor_spatial(double *xposx, double *xposy, double *yposx, double *yposy, double *bars,
+            double *xpos, double *ypos, int *pdims, double *cor, double *var)
 {
     DIMS dims;
+    double xbar, ybar;
 
     dims = dimension(pdims);
-    cor_tjostheim(x, y, dims, cor);
+    xbar = bars[0];
+    ybar = bars[1];
+    cor_tjostheim(xposx, xposy, yposx, yposy, dims, xbar, ybar, cor);
     var_tjostheim(xpos, ypos, dims, var);
     dimension_free(dims);
 }
 
 void
-cor_tjostheim(double *x, double *y, DIMS dims, double *cor)
-{
-    int i;
-    double ans = 0.0, sx = 0.0, sy = 0.0;
-
-    for (i = 0; i < dims->n; i++) {
-        sx += SQR(x[i]) + SQR(y[i]);
-        sy += SQR(x[i + dims->n]) + SQR(y[i + dims->n]);
-    }
-    ans += dot_product(x, 1, x + dims->n, 1, dims->n);
-    ans += dot_product(y, 1, y + dims->n, 1, dims->n);
-    ans /= sqrt(sx * sy);
-    *cor = ans;
+cor_tjostheim(double *xposx, double *xposy, double *yposx, double *yposy, DIMS dims,
+              double xbar, double ybar, double *cor)
+{   
+    F77_CALL(tjostheim)(xposx, xposy, yposx, yposy, &(dims->n), &xbar, &ybar, cor);
 }
 
 void

@@ -3,7 +3,7 @@
 
 static const R_CMethodDef CEntries[]  = {
     {"codisp",          (DL_FUNC) &codisp,          8},
-    {"cor_spatial",     (DL_FUNC) &cor_spatial,     7},
+    {"cor_spatial",     (DL_FUNC) &cor_spatial,     10},
     {"modified_ttest",  (DL_FUNC) &modified_ttest,  10},
     {NULL, NULL, 0}
 };
