@@ -1,14 +1,16 @@
-citHeader("To cite the SpatialPack package in publications use:")
+citHeader("To cite SpatialPack in publications use:")
 
-citEntry(entry="Manual",
-         title = "SpatialPack: Package for analysis of spatial data",
-	 author = personList(as.person("Osorio, F."),as.person("Vallejos, R.")),
-	 year = "2014",
-	 note = "R package version 0.2-3",
-	 url = "http://cran.r-project.org/package=SpatialPack",
-	 textVersion =
-	 paste("Osorio, F. and Vallejos, R. (2014). ",
-               "SpatialPack: Package for analysis of spatial data. ",
-	       "R package version 0.2-3. ",
-	       "http://cran.r-project.org/package=SpatialPack", sep="")
+citEntry(entry="Book",
+  title = "Spatial Relationships Between Two Georeferenced Variables: with Applications in R",
+  author = personList(as.person("R. Vallejos"),
+                      as.person("F. Osorio"),
+                      as.person("M. Bevilacqua")),
+  publisher = "Springer",
+  address   = "New York",
+  year      = 2018,
+  url       = "http://srb2gv.mat.utfsm.cl",
+  textVersion =
+    paste("Vallejos, R., Osorio, F., Bevilacqua, M. (2018+).",
+      "Spatial Relationships Between Two Georeferenced Variables: with Applications in R.",
+      "Springer, New York.")
 )

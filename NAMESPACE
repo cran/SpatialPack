@@ -1,11 +1,20 @@
-useDynLib(SpatialPack)
+useDynLib(SpatialPack, .registration = TRUE)
 
-export(codisp, cor.spatial, modified.ttest)
+## base packages
+importFrom("graphics",
+           plot, title)
+importFrom("stats",
+           complete.cases, cor, lm, pf)
+
+## our exports:
+export(codisp, cor.spatial, modified.Ftest, modified.ttest)
 
 ## register S3 methods
-
 S3method(print, codisp)
 S3method(plot, codisp)
+S3method(print, mod.Ftest)
+S3method(summary, mod.Ftest)
+S3method(print, summary.mod.Ftest)
 S3method(print, mod.ttest)
 S3method(summary, mod.ttest)
 S3method(print, summary.mod.ttest)

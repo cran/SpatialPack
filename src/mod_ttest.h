@@ -9,7 +9,7 @@
 TTEST mod_ttest_init(double *, double *, double *, double *, int *, double *, double *, double *, double *, double *);
 void mod_ttest_free(TTEST);
 void MoranI(double *, double *, DIMS, double *, double *, double *, double *, double *);
-double corrected_df(double *, double *, DIMS, double *, double *);
+double estimated_ESS(double *, double *, DIMS, double *, double *);
 void mod_ttest(double *, double *, DIMS, double *, double *, double *, double *, double *, double *, double *);
 
 #endif /* MOD_TTEST_H */

@@ -51,6 +51,17 @@ typedef struct CODISP_struct {
         *coef;          /* association coefficient */
 } CODISP_struct, *CODISP;
 
+/* Similarity structure */
+typedef struct SIM_struct {
+  double
+    *x,       /* vector of 'x' values */
+    *y,       /* vector of 'y' values */
+    *eps,     /* constants */
+    *stats,   /* sample moments */
+    *comp,    /* components of SSIM */
+    *params;  /* parameters of SSIM */
+} SIM_struct, *SIM;
+
 /* routines definitions */
 DIMS dimension(int *);
 void dimension_free(DIMS);

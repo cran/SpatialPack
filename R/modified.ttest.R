@@ -17,6 +17,7 @@ function(x, y, coords, nclass = 13)
 
   ## extract coordinates, is assumed that the variables are in the appropiate order
   coords <- as.matrix(coords)
+  coords <- coords[OK,]
   p <- ncol(coords)
   if (p < 2) stop("'coords' must be a matrix with two columns")
   if (p > 2) warning("only the first two columns of 'coords' are considered")
@@ -47,7 +48,10 @@ function(x, y, coords, nclass = 13)
   speed <- proc.time() - now
 
   ## creating output object
-  o <- list(corr = z$corr, Fstat = z$stats[1], dof = z$stats[2], p.value = z$stats[3])
+  ESS   <- z$stats[1]
+  dof   <- ESS - 2
+  Fstat <- z$stats[2] # unscaled F-statistic
+  o <- list(corr = z$corr, ESS = ESS, Fstat = Fstat, dof = dof, p.value = z$stats[3])
   o$dims <- dims
   o$upper.bounds <- z$upper.bounds
   o$card <- z$card
@@ -69,7 +73,7 @@ print.mod.ttest <- function(x, digits = 4, ...)
   dnames <- paste(x$data.names, collapse = " and ", sep = "")
   coords <- paste(x$coords.names, collapse = " and ", sep = "")
   cat("data:", paste(c(dnames, ";"), sep = ""), "coordinates:", coords, "\n")
-  cat("F-statistic:", format(round(x$Fstat, digits = digits)), "on 1 and",
+  cat("F-statistic:", format(round(x$dof * x$Fstat, digits = digits)), "on 1 and",
       format(round(x$dof, digits = digits)), "DF, p-value:",
       format(round(x$p.value, digits = digits)), "\n")
   cat("alternative hypothesis: true autocorrelation is not equal to 0\n")
