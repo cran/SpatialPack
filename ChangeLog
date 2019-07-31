@@ -1,7 +1,16 @@
+0.3-8 (Jul 31, 2019)
+	* Now underlying code for the computation of sample mean, variance and covariance
+		is based on an online algorithm.
+	* Added routine to convert RGB image to grayscale using several methods.
+	* Added routines to add noise to image (available methods: gaussian, salt & pepper,
+	  uniform and Gamma speckle).
+	* Added routines to compute similarity between images.
+	* Added some auxiliary routines.
+
 0.3 (Mar 20, 2018)
 	* Now routines modified.ttest and modified.Ftest return the estimated effective
 		sample size and the unscaled F-statistic.
-	* Added routine to compute the modified F test (Dutilleul et al. 2008, JSPI 138,
+	* Added routine to compute the modified F-test (Dutilleul et al. 2008, JSPI 138,
 		1402-1415).
 	* Authors field at DESCRIPTION file was corrected.
 

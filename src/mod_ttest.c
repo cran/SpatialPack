@@ -1,8 +1,19 @@
-#include "mod_ttest.h"
+/* $ID: mod_ttest.c, last updated 2018/08/07, F.Osorio */
+
+#include "spatialpack.h"
+#include "stats.h"
+
+/* static functions.. */
+TTEST mod_ttest_init(double *, double *, double *, double *, int *, double *, double *, double *, double *, double *);
+void mod_ttest_free(TTEST);
+void MoranI(double *, double *, DIMS, double *, double *, double *, double *, double *);
+double estimated_ESS(double *, double *, DIMS, double *, double *);
+void mod_ttest(double *, double *, DIMS, double *, double *, double *, double *, double *, double *, double *);
+/* ..end declarations */
 
 void
-modified_ttest(double *x, double *y, double *xpos, double *ypos, int *pdims, double *cor,
-  double *upper_bounds, double *card, double *imoran, double *stats)
+modified_ttest(double *x, double *y, double *xpos, double *ypos, int *pdims,
+  double *cor, double *upper_bounds, double *card, double *imoran, double *stats)
 {
   TTEST obj;
 
@@ -38,24 +49,21 @@ void
 MoranI(double *x, double *y, DIMS dims, double *xpos, double *ypos, double *upper_bounds,
   double *card, double *index)
 { /* Moran's I */
-  int i, j, k, which_class;
-  double dx, dy, distance, sx, sy, xbar, xvar, ybar, yvar, wts;
+  int pos;
+  double dx, dy, distance, dummy, sx, sy, xbar, xvar, ybar, yvar, wts;
 
-  mean_and_var(x, dims->n, &xbar, &xvar);
-  mean_and_var(y, dims->n, &ybar, &yvar);
+  online_covariance(x, y, dims->n, &xbar, &ybar, &xvar, &yvar, &dummy);
 
-  for (k = 0; k < dims->nclass; k++) {
-    sx = 0.0;
-    sy = 0.0;
-    wts = 0.0;
-    for (j = 0; j < dims->n; j++) {
-      for (i = j + 1; i < dims->n; i++) {
+  for (int k = 0; k < dims->nclass; k++) {
+    sx = sy = wts = 0.0;
+    for (int j = 0; j < dims->n; j++) {
+      for (int i = j + 1; i < dims->n; i++) {
         dx = (xpos[i] - xpos[j]);
         dy = (ypos[i] - ypos[j]);
         distance = hypot(dx, dy);
-        which_class = find_interval(upper_bounds, dims->nclass, distance);
-        if (which_class == k) {
-          wts += 1.0;
+        pos = find_interval(upper_bounds, dims->nclass, distance);
+        if (pos == k) {
+          wts++;
           sx += (x[i] - xbar) * (x[j] - xbar);
           sy += (y[i] - ybar) * (y[j] - ybar);
         }
@@ -70,14 +78,14 @@ MoranI(double *x, double *y, DIMS dims, double *xpos, double *ypos, double *uppe
 double
 estimated_ESS(double *xpos, double *ypos, DIMS dims, double *upper_bounds, double *imoran)
 {
-  int i, j, pos;
+  int pos;
   double corx, cory, dx, dy, distance, rxx, ryy, sxx, syy, sxy, trxx, tryy, trxy, ans;
 
   /* initialization of correlation matrices */
   sxx = syy = sxy = trxy = 0.0;
-  for (j = 0; j < dims->n; j++) {
+  for (int j = 0; j < dims->n; j++) {
     rxx = ryy = 0.0;
-    for (i = 0; i < dims->n; i++) {
+    for (int i = 0; i < dims->n; i++) {
       if (i != j) {
         dx = (xpos[i] - xpos[j]);
         dy = (ypos[i] - ypos[j]);
