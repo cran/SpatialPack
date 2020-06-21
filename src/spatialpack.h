@@ -1,4 +1,4 @@
-/* $ID: spatialpack.h, last updated 2018-08-07, osorio */
+/* $ID: spatialpack.h, last updated 2020-06-15, F.Osorio */
 
 #ifndef SPATIALPACK_H
 #define SPATIALPACK_H

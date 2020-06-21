@@ -1,4 +1,4 @@
-/* $ID: image.c, last updated 2019-07-25, F.Osorio */
+/* $ID: image.c, last updated 2020-06-15, F.Osorio */
 
 #include "base.h"
 #include "image.h"

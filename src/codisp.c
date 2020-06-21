@@ -1,4 +1,4 @@
-/* $ID: codisp.c, last updated 2018-08-07, F.Osorio */
+/* $ID: codisp.c, last updated 2020-06-15, F.Osorio */
 
 #include "spatialpack.h"
 

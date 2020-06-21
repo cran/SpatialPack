@@ -1,4 +1,4 @@
-## $ID: image.R, last updated 2019/06/22, F.Osorio
+## $ID: image.R, last updated 2020/06/20, F.Osorio
 
 RGB2gray <- function(img, method = "average", weights = NULL)
 {
@@ -154,7 +154,9 @@ denoise <- function(img, type = "Lee", looks = 1, damping = 1)
 
   task <- switch(type, "median"   = 0,
                        "Lee"      = 1,
-                       "enhanced" = 2)
+                       "enhanced" = 2,
+                       "Kuan"     = 3,
+                       "Nathan"   = 4)
 
   y <- .Fortran("denoise",
           x = y,

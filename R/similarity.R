@@ -1,4 +1,4 @@
-## $ID: similarity.R, last updated 2019/07/31, F.Osorio
+## $ID: similarity.R, last updated 2020/06/15, F.Osorio
 
 SSIM <- function(x, y, alpha = 1, beta = 1, gamma = 1, eps = c(0.01, 0.03), L = 255)
 { ## structural similarity index for images (SSIM)

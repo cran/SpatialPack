@@ -1,4 +1,4 @@
-/* $ID: similarity.c, last updated 2019-07-31, F.Osorio */
+/* $ID: similarity.c, last updated 2020-06-15, F.Osorio */
 
 #include "similarity.h"
 #include "spatialpack.h"
