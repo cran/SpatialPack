@@ -1,4 +1,4 @@
-/* $ID: init.c, last updated 2020-09-11, F.Osorio */
+/* $ID: R_init_SpatialPack.c, last updated 2022-08-18, F.Osorio */
 
 #include "base.h"
 #include "spatialpack.h"
@@ -19,9 +19,8 @@ extern void clipping_img(double *, int *, int *, int *, double *, double *);
 extern void F77_NAME(de_noise)(double *, int *, int *, int *, double *, int *, double *, double *, int *);
 extern void gamma_noise(double *, int *, int *, int *, double *);
 extern void normalize_img(double *, int *, int *, int *, double *, double *);
-extern void RGB2gray_img(double *, int *, double *, double *, double *, int *, int *, double *, int *);
+extern void RGB2gray_img(double *, double *, double *, double *, int *, double *, int *);
 extern void saltnpepper(double *, int *, int *, int *, double *);
-extern void sqrt_gamma_noise(double *, int *, int *, int *, double *);
 extern void unif_speckle(double *, int *, int *, int *, double *);
 
 /* routines for image quality assessment */
@@ -38,7 +37,7 @@ static const R_CMethodDef CEntries[]  = {
   CALLDEF(gamma_noise,      5),
   CALLDEF(modified_ttest,  10),
   CALLDEF(normalize_img,    6),
-  CALLDEF(RGB2gray_img,     9),
+  CALLDEF(RGB2gray_img,     7),
   CALLDEF(saltnpepper,      5),
   CALLDEF(SSIM_coef,        8),
   CALLDEF(unif_speckle,     5),

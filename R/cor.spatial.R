@@ -1,3 +1,5 @@
+## $ID: cor.spatial.R, last updated 2022-08-18, F.Osorio
+
 cor.spatial <-
 function(x, y, coords)
 {
@@ -31,7 +33,7 @@ function(x, y, coords)
   ypos.x <- ypos[rk.x]
   ypos.y <- ypos[rk.y]
 
-  ## call routine 
+  ## call routine
   z <- .C("cor_spatial",
           xpos.x = as.double(xpos.x),
           xpos.y = as.double(xpos.y),
@@ -43,7 +45,7 @@ function(x, y, coords)
           dims = as.integer(dims),
           cor = as.double(0),
           var = as.double(0))
-  
+
   ## creating output object
   x <- z$cor
   attr(x, "variance") <- z$var

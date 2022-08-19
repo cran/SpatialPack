@@ -1,7 +1,11 @@
+0.4 (Aug 18, 2022)
+  * An issue in SSIM and CQ functions was fixed (reported by Julia Markowski).
+	* Minor clean-ups in C and R codes.
+
 0.3-8196 (Sep 22, 2020)
 	* C code to obtain certain descriptive statistics is now provided by 'fastmatrix'
 	  R package.
-	* Minor clean-ups in C and R.
+	* Minor clean-ups in C and R codes.
 
 0.3-819 (Jun 20, 2020)
 	* Fixed an issue reported by professor Brian Ripley.
