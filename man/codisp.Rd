@@ -33,6 +33,10 @@
   versus the lag distance.
 }
 \references{
+  Cuevas, F., Porcu, E., Vallejos, R. (2013). 
+  Study of spatial relationships between two sets of variables: A nonparametric approach.
+  \emph{Journal of Nonparametric Statistics} \bold{25}, 695-714.
+
   Matheron, G. (1965),
   \emph{Les Variables Regionalisees et leur Estimation}.
   Masson, Paris.

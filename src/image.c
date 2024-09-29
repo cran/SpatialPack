@@ -1,8 +1,7 @@
-/* $ID: image.c, last updated 2022-08-18, F.Osorio */
+/* $ID: image.c, last updated 2024-09-13, F.Osorio */
 
-#include "base.h"
 #include "spatialpack.h"
-#include "stats.h"
+#include "interface.h"
 
 /* static functions.. */
 static double average(double, double, double);

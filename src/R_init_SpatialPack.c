@@ -1,6 +1,5 @@
 /* $ID: R_init_SpatialPack.c, last updated 2022-08-18, F.Osorio */
 
-#include "base.h"
 #include "spatialpack.h"
 #include <R_ext/Rdynload.h>
 
@@ -10,6 +9,7 @@
 /* routines to assess the correlation between two spatial processes */
 extern void codisp_coef(double *, double *, double *, double *, int *, double *, double *, double *);
 extern void codisp_direction(double *, double *, int *, int *, int *, double *);
+extern void codisp_ks(double *, double *, double *, double *, int *, double *, double *, int *, double *);
 extern void cor_spatial(double *, double *, double *, double *, double *, double *, double *, int *, double *, double *);
 extern void modified_ttest(double *, double *, double *, double *, int *, double *, double *, double *, double *, double *);
 
@@ -32,6 +32,7 @@ static const R_CMethodDef CEntries[]  = {
   CALLDEF(clipping_img,     6),
   CALLDEF(codisp_coef,      8),
   CALLDEF(codisp_direction, 6),
+  CALLDEF(codisp_ks,        9),
   CALLDEF(cor_spatial,     10),
   CALLDEF(CQ_coef,          8),
   CALLDEF(gamma_noise,      5),

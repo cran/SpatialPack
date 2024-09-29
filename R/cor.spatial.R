@@ -43,8 +43,8 @@ function(x, y, coords)
           xpos = as.double(xpos),
           ypos = as.double(ypos),
           dims = as.integer(dims),
-          cor = as.double(0),
-          var = as.double(0))
+          cor = double(1),
+          var = double(1))
 
   ## creating output object
   x <- z$cor
